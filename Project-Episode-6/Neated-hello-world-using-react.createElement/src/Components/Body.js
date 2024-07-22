@@ -24,7 +24,7 @@ const Body = () => {
       console.log(json); // Log the JSON response to inspect its structure
 
       const restaurants =
-        json?.data?.success?.cards?.[3]?.gridWidget?.gridElements?.infoWithStyle
+        json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
           ?.restaurants;
       if (restaurants) {
         setListOfRestaurants(restaurants);
