@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 //import resList from "../utils/mock_data";
 
 const Body = () => {
@@ -8,6 +9,8 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [error, setError] = useState(null);
   const [searchText, setSearchText] = useState("");
+
+  const onlineStatus = useOnlineStatus();
 
   useEffect(() => {
     fetchData();
@@ -25,7 +28,7 @@ const Body = () => {
       console.log(json); // Log the JSON response to inspect its structure
 
       const restaurants =
-        json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+        json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle
           ?.restaurants;
       if (restaurants) {
         setListOfRestaurants(restaurants);
@@ -37,10 +40,18 @@ const Body = () => {
       console.error("Error fetching data:", error);
     }
   };
-
+  if (onlineStatus === false) {
+    return (
+      <h1>
+        Looks like you are offline right now, please check your internet
+        connection
+      </h1>
+    );
+  }
   if (listOfRestaurants.length === 0) {
     return <h1>Loading.....</h1>;
   }
+
   return (
     <div className="body">
       <div className="filter">
