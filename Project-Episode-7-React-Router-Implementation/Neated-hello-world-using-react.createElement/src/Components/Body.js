@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 //import resList from "../utils/mock_data";
 
 const Body = () => {
@@ -12,6 +13,7 @@ const Body = () => {
 
   const onlineStatus = useOnlineStatus();
   const PromotedCard = withPromotedLabel(RestaurantCard);
+  const { setUserName, loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
     fetchData();
@@ -87,6 +89,12 @@ const Body = () => {
           >
             Top Rated restaurant
           </button>
+          <label className="font-mono">Username: </label>
+          <input
+            className="border border-black rounded-lg p-2"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          ></input>
         </div>
       </div>
       <div className="flex flex-wrap justify-between">
