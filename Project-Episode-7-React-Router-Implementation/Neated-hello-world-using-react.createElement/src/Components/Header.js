@@ -2,32 +2,33 @@ import { useState } from "react";
 import { LOGO_URL } from "../Utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import smokingBurgerImage from "../utils/smoking-burger-with-lettuce-3624ld-removebg-preview.png";
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="header">
+    <div className="flex justify-between bg-yellow-50 shadow-lg m-2">
       <div className="logo-container">
-        <img className="logo" src={LOGO_URL}></img>
+        <img className="w-56" src={smokingBurgerImage}></img>
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>Online Status: {onlineStatus ? "✅" : "🔴"} </li>
-          <li>
+      <div className="flex items-center font-mono text-lg">
+        <ul className="flex p-4 m-4 ">
+          <li className="px-4">Online Status: {onlineStatus ? "✅" : "🔴"} </li>
+          <li className="px-4">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/about">About Us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
+          <li className="px-4">Cart</li>
           <button
-            className="login"
+            className="px-4"
             onClick={() => {
               btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
             }}
