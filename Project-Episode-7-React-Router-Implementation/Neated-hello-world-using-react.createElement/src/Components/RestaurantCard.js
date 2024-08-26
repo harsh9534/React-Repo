@@ -3,7 +3,7 @@ import { CDN_URL } from "../Utils/constants";
 const RestaurantCard = ({ resData }) => {
   const { name, cuisines, costForTwo, cloudinaryImageId } = resData?.info;
   return (
-    <div className="m-2 p-4 w-[250px] rounded-lg bg-grey-50 hover:bg-gray-200 shadow-lg">
+    <div className="m-2 p-4 w-[280px] h-[520px] rounded-lg bg-grey-50 hover:bg-gray-200 shadow-lg">
       <img className="rounded-lg" src={CDN_URL + cloudinaryImageId}></img>
       <h3 className="font-bold py-4 text-lg">{name}</h3>
       <h4>{cuisines.join(", ")}</h4>

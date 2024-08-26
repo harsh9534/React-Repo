@@ -4,43 +4,43 @@ import defImage from "../utils/defImage.png";
 import { addItem, removeItem } from "../utils/cartSlice"; // Assuming you have a removeItem action
 import { useState } from "react";
 
-const ItemList = ({ items }) => {
-  const dispatch = useDispatch();
+const CartItemList = ({ items }) => {
+  //   const dispatch = useDispatch();
 
-  // Create an object to store the count of each item
-  const [itemCounts, setItemCounts] = useState({});
+  //   // Create an object to store the count of each item
+  //   const [itemCounts, setItemCounts] = useState({});
 
-  const handleAddItem = (item) => {
-    const itemId = item.card.info.id;
+  //   const handleAddItem = (item) => {
+  //     const itemId = item.card.info.id;
 
-    // Dispatch the action to add item to the cart
-    dispatch(addItem(item));
+  //     // Dispatch the action to add item to the cart
+  //     dispatch(addItem(item));
 
-    // Update the item count
-    setItemCounts((prevCounts) => ({
-      ...prevCounts,
-      [itemId]: prevCounts[itemId] ? prevCounts[itemId] + 1 : 1,
-    }));
-  };
+  //     // Update the item count
+  //     setItemCounts((prevCounts) => ({
+  //       ...prevCounts,
+  //       [itemId]: prevCounts[itemId] ? prevCounts[itemId] + 1 : 1,
+  //     }));
+  //   };
 
-  const handleRemoveItem = (item) => {
-    const itemId = item.card.info.id;
+  //   const handleRemoveItem = (item) => {
+  //     const itemId = item.card.info.id;
 
-    // Dispatch the action to remove item from the cart
-    if (itemCounts[itemId] > 1) {
-      dispatch(removeItem(item));
-      // Update the item count
-      setItemCounts((prevCounts) => ({
-        ...prevCounts,
-        [itemId]: prevCounts[itemId] - 1,
-      }));
-    } else {
-      // If count is 1, removing the item will set count to 0
-      dispatch(removeItem(item));
-      const { [itemId]: _, ...restCounts } = itemCounts;
-      setItemCounts(restCounts);
-    }
-  };
+  //     // Dispatch the action to remove item from the cart
+  //     if (itemCounts[itemId] > 1) {
+  //       dispatch(removeItem(item));
+  //       // Update the item count
+  //       setItemCounts((prevCounts) => ({
+  //         ...prevCounts,
+  //         [itemId]: prevCounts[itemId] - 1,
+  //       }));
+  //     } else {
+  //       // If count is 1, removing the item will set count to 0
+  //       dispatch(removeItem(item));
+  //       const { [itemId]: _, ...restCounts } = itemCounts;
+  //       setItemCounts(restCounts);
+  //     }
+  //   };
 
   return (
     <div>
@@ -69,7 +69,7 @@ const ItemList = ({ items }) => {
               }
               alt={item.card.info.name}
             />
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full flex items-center justify-center">
+            {/* <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full flex items-center justify-center">
               {itemCounts[item.card.info.id] ? (
                 <div className="flex items-center bg-white shadow-lg rounded-lg p-2">
                   <button
@@ -96,7 +96,7 @@ const ItemList = ({ items }) => {
                   ADD
                 </button>
               )}
-            </div>
+            </div> */}
           </div>
         </div>
       ))}
@@ -104,4 +104,4 @@ const ItemList = ({ items }) => {
   );
 };
 
-export default ItemList;
+export default CartItemList;

@@ -22,7 +22,7 @@ const Body = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "https://www.swiggy.com/mapi/homepage/getCards?lat=26.26920&lng=73.00900"
+        "https://www.swiggy.com/mapi/homepage/getCards?lat=12.9578047&lng=77.7130364"
       );
       // if (!response.ok) {
       //   throw new Error(`HTTP error! status: ${response.status}`);
@@ -31,7 +31,7 @@ const Body = () => {
       console.log(json); // Log the JSON response to inspect its structure
 
       const restaurants =
-        json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle
+        json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
           ?.restaurants;
       if (restaurants) {
         setListOfRestaurants(restaurants);
@@ -57,18 +57,21 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="flex bg-yellow-50 m-2 shadow-lg">
-        <div className="m-4 p-4">
+      <div className="flex justify-between items-center bg-white shadow-lg p-4">
+        <h1 className="text-xl font-semibold text-gray-700">
+          What's on your mind?
+        </h1>
+        <div className="flex items-center">
           <input
             type="text"
-            className="border border-solid border-black rounded-lg shadow-lg"
+            className="w-72 border border-solid border-black rounded-2xl shadow-lg p-2"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
-          ></input>
+          />
           <button
-            className="px-4 bg-black m-4 py-1 shadow-md rounded-lg text-white "
+            className="px-4 py-2 m-2 text-black bg-white border border-black rounded-2xl shadow-md hover:text-white hover:bg-black transition-all duration-300"
             onClick={() => {
               const filteredRestaurant = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -79,7 +82,7 @@ const Body = () => {
             Search
           </button>
           <button
-            className="px-4 bg-black m-4 py-1 shadow-md rounded-lg text-white"
+            className="px-4 py-2 m-2 text-black bg-white border border-black rounded-2xl shadow-md hover:text-white hover:bg-black transition-all duration-300"
             onClick={() => {
               const filteredResList = listOfRestaurants.filter(
                 (res) => res.info.avgRating > 4.5
@@ -89,15 +92,9 @@ const Body = () => {
           >
             Top Rated restaurant
           </button>
-          <label className="font-mono">Username: </label>
-          <input
-            className="border border-black rounded-lg p-2"
-            value={loggedInUser}
-            onChange={(e) => setUserName(e.target.value)}
-          ></input>
         </div>
       </div>
-      <div className="flex flex-wrap justify-between">
+      <div className="flex flex-wrap justify-evenly">
         {listOfRestaurants.length > 0 ? (
           filteredRestaurants.map((restaurant) => (
             <Link
