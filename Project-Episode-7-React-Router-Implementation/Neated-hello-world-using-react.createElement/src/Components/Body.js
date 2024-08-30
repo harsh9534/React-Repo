@@ -22,7 +22,7 @@ const Body = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "https://www.swiggy.com/mapi/homepage/getCards?lat=12.9578047&lng=77.7130364"
+        "https://www.swiggy.com/mapi/homepage/getCards?lat=12.9578042&lng=77.7130364"
       );
       // if (!response.ok) {
       //   throw new Error(`HTTP error! status: ${response.status}`);
@@ -31,7 +31,7 @@ const Body = () => {
       console.log(json); // Log the JSON response to inspect its structure
 
       const restaurants =
-        json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
+        json?.data?.success?.cards[3]?.gridWidget?.gridElements?.infoWithStyle
           ?.restaurants;
       if (restaurants) {
         setListOfRestaurants(restaurants);
