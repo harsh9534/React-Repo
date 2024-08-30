@@ -11,6 +11,7 @@ import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./Components/Cart";
+import SignIN from "./Components/SignIN";
 
 //--------This is called --->Chunking, Code splitting , Dynamic Bundling , lazy Loading , on demand loading , dynamic import
 // This is used to create separate bundles to reduce the size of the main bundle
