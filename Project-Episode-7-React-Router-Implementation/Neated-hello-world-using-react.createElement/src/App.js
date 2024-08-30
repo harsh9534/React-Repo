@@ -11,10 +11,12 @@ import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./Components/Cart";
+
 //--------This is called --->Chunking, Code splitting , Dynamic Bundling , lazy Loading , on demand loading , dynamic import
 // This is used to create separate bundles to reduce the size of the main bundle
 const Grocery = lazy(() => import("./Components/Grocery"));
 const About = lazy(() => import("./Components/About"));
+
 const AppLayout = () => {
   const [userName, setUserName] = useState();
   useEffect(() => {
@@ -24,6 +26,7 @@ const AppLayout = () => {
     };
     setUserName(data.name);
   }, []);
+
   return (
     <Provider store={appStore}>
       <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
@@ -58,6 +61,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/signin",
+        element: <SignIN />,
       },
       {
         path: "/restaurant/:resID",
