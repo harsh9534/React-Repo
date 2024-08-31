@@ -12,6 +12,7 @@ import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./Components/Cart";
 import SignIN from "./Components/SignIN";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 //--------This is called --->Chunking, Code splitting , Dynamic Bundling , lazy Loading , on demand loading , dynamic import
 // This is used to create separate bundles to reduce the size of the main bundle
@@ -90,4 +91,9 @@ const appRouter = createBrowserRouter([
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={appRouter} />);
+
+root.render(
+  <GoogleOAuthProvider clientId="943731946262-v5sha5c69o9i4qhmg7l0r8753rt845iv.apps.googleusercontent.com">
+    <RouterProvider router={appRouter} />
+  </GoogleOAuthProvider>
+);

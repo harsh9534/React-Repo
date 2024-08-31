@@ -9,6 +9,7 @@ const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
   const data = useContext(UserContext);
+
   //Subscribing to the store using selector
   const cartItems = useSelector((store) => store.cart.items);
   return (
@@ -34,7 +35,7 @@ const Header = () => {
           <li className="px-4  ">
             <Link to="/cart"> 🛒- {cartItems.length} </Link>
           </li>
-          <li className="px-4 font-bold">{data.loggedInUser}</li>
+          <li className="px-4 font-bold">{userName}</li>
           <button
             className="px-4"
             onClick={() => {
